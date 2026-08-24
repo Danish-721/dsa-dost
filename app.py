@@ -58,11 +58,45 @@ FONT_PATH = os.path.join(FONT_DIR, "NotoSansDevanagari-Regular.ttf")
 st.markdown(
     """
 <style>
+
+/* ============================================================
+   GLOBAL / RESPONSIVE BASE
+   ============================================================ */
+
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stAppViewContainer"] > section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .stApp {
     background:
-        radial-gradient(circle at 12% 8%, rgba(124, 58, 237, 0.13), transparent 27%),
-        radial-gradient(circle at 88% 15%, rgba(37, 99, 235, 0.10), transparent 26%),
-        radial-gradient(circle at 52% 100%, rgba(6, 182, 212, 0.06), transparent 30%),
+        radial-gradient(
+            circle at 12% 8%,
+            rgba(124, 58, 237, 0.13),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 88% 15%,
+            rgba(37, 99, 235, 0.10),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 52% 100%,
+            rgba(6, 182, 212, 0.06),
+            transparent 30%
+        ),
         #070910;
     color: #f8fafc;
 }
@@ -76,16 +110,27 @@ st.markdown(
 }
 
 .block-container {
+    width: 100%;
     max-width: 1180px;
+    margin: 0 auto;
     padding-top: 2.2rem;
     padding-bottom: 7rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
-/* ---------- Sidebar ---------- */
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
 
 section[data-testid="stSidebar"] {
     background:
-        linear-gradient(180deg, rgba(17, 20, 31, 0.98), rgba(9, 11, 18, 0.99));
+        linear-gradient(
+            180deg,
+            rgba(17, 20, 31, 0.98),
+            rgba(9, 11, 18, 0.99)
+        );
     border-right: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -96,6 +141,8 @@ section[data-testid="stSidebar"] > div {
 section[data-testid="stSidebar"] .stButton > button,
 section[data-testid="stSidebar"] .stDownloadButton > button {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     border-radius: 11px;
     border: 1px solid rgba(255,255,255,0.09);
     background: rgba(255,255,255,0.045);
@@ -111,57 +158,60 @@ section[data-testid="stSidebar"] .stDownloadButton > button:hover {
 }
 
 .sidebar-brand {
-    display:flex;
-    align-items:center;
-    gap:12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     padding: 5px 2px 20px 2px;
+    min-width: 0;
 }
 
 .brand-logo {
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
     background: linear-gradient(135deg,#7c3aed,#2563eb);
     box-shadow: 0 10px 30px rgba(124,58,237,.28);
 }
 
 .brand-title {
-    font-size:18px;
-    font-weight:800;
-    letter-spacing:-.3px;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -.3px;
 }
 
 .brand-subtitle {
-    color:#8f98aa;
-    font-size:11px;
-    margin-top:2px;
+    color: #8f98aa;
+    font-size: 11px;
+    margin-top: 2px;
 }
 
 .sidebar-section {
-    color:#71798a;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1.5px;
-    margin:22px 0 10px;
-    text-transform:uppercase;
+    color: #71798a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 22px 0 10px;
+    text-transform: uppercase;
 }
 
 .sidebar-info {
-    padding:12px 13px;
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:12px;
-    background:rgba(255,255,255,.025);
-    color:#aab2c0;
-    font-size:12px;
-    line-height:1.5;
+    padding: 12px 13px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    background: rgba(255,255,255,.025);
+    color: #aab2c0;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
 .sidebar-info strong {
-    color:#e7eaf0;
+    color: #e7eaf0;
 }
 
 .conversation-button-wrap {
@@ -175,50 +225,69 @@ section[data-testid="stSidebar"] .stDownloadButton > button:hover {
 }
 
 .sidebar-footer {
-    color:#596274;
-    font-size:10px;
-    line-height:1.6;
+    color: #596274;
+    font-size: 10px;
+    line-height: 1.6;
     padding: 20px 0 4px;
 }
 
-/* ---------- Header ---------- */
+
+/* ============================================================
+   MAIN HERO
+   ============================================================ */
 
 .hero {
-    text-align:center;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
     padding: 8px 0 18px;
+    overflow-wrap: anywhere;
 }
 
 .hero-badge {
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-    padding:7px 12px;
-    border-radius:999px;
-    border:1px solid rgba(124,58,237,.25);
-    background:rgba(124,58,237,.08);
-    color:#c4b5fd;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    max-width: 100%;
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(124,58,237,.25);
+    background: rgba(124,58,237,.08);
+    color: #c4b5fd;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
 }
 
 .online-dot {
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#22c55e;
-    box-shadow:0 0 12px rgba(34,197,94,.8);
+    width: 7px;
+    height: 7px;
+    min-width: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 12px rgba(34,197,94,.8);
 }
 
 .hero h1 {
-    margin:17px 0 6px;
+    width: 100%;
+    max-width: 100%;
+    margin: 17px 0 6px;
     font-size: clamp(34px, 5vw, 58px);
-    line-height:1.05;
-    letter-spacing:-2.5px;
-    font-weight:850;
-    background:linear-gradient(90deg,#ffffff 5%,#c4b5fd 48%,#67e8f9 95%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    line-height: 1.05;
+    letter-spacing: -2.5px;
+    font-weight: 850;
+    overflow-wrap: anywhere;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff 5%,
+        #c4b5fd 48%,
+        #67e8f9 95%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero h1 .wave {
@@ -231,236 +300,693 @@ section[data-testid="stSidebar"] .stDownloadButton > button:hover {
 }
 
 .hero p {
-    color:#8f98aa;
-    margin:0 auto;
-    font-size:14px;
+    color: #8f98aa;
+    margin: 0 auto;
+    font-size: 14px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
 }
 
 .chat-title {
-    text-align:center;
-    color:#e9edf5;
-    font-size:14px;
-    font-weight:700;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    color: #e9edf5;
+    font-size: 14px;
+    font-weight: 700;
     margin: 0 auto 12px;
+    overflow-wrap: anywhere;
 }
 
+
+/* ============================================================
+   WELCOME CARD
+   ============================================================ */
+
 .welcome-card {
-    position:relative;
-    overflow:hidden;
-    margin: 10px auto 22px;
+    position: relative;
+    width: 100%;
     max-width: 850px;
+    margin: 10px auto 22px;
     padding: 32px;
-    border-radius:24px;
-    border:1px solid rgba(255,255,255,.085);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,.085);
     background:
-        radial-gradient(circle at 20% 10%, rgba(124,58,237,.12), transparent 35%),
-        linear-gradient(135deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(124,58,237,.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
     box-shadow: 0 25px 80px rgba(0,0,0,.25);
-    text-align:center;
+    text-align: center;
+    overflow: hidden;
 }
 
 .welcome-icon {
-    width:62px;
-    height:62px;
-    margin:0 auto 16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:20px;
-    font-size:30px;
-    background:linear-gradient(135deg,rgba(124,58,237,.22),rgba(37,99,235,.18));
-    border:1px solid rgba(167,139,250,.2);
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 30px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,58,237,.22),
+            rgba(37,99,235,.18)
+        );
+    border: 1px solid rgba(167,139,250,.2);
 }
 
 .welcome-card h2 {
-    margin:0 0 8px;
-    font-size:27px;
-    letter-spacing:-.7px;
+    margin: 0 0 8px;
+    font-size: 27px;
+    letter-spacing: -.7px;
+    overflow-wrap: anywhere;
 }
 
 .welcome-card p {
-    color:#929bad;
-    margin:0 auto;
-    max-width:600px;
-    font-size:13px;
-    line-height:1.7;
+    color: #929bad;
+    margin: 0 auto;
+    max-width: 600px;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
 }
 
+
+/* ============================================================
+   QUICK PROMPTS
+   ============================================================ */
+
 .prompt-label {
-    color:#737c8d;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
+    color: #737c8d;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     margin: 5px 0 10px;
 }
 
 .prompt-card {
-    min-height:78px;
-    padding:14px 15px;
-    border-radius:16px;
-    border:1px solid rgba(255,255,255,.075);
-    background:rgba(255,255,255,.028);
-    transition:all .2s ease;
+    width: 100%;
+    min-width: 0;
+    min-height: 78px;
+    padding: 14px 15px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.075);
+    background: rgba(255,255,255,.028);
+    transition: all .2s ease;
+    overflow: hidden;
 }
 
 .prompt-card:hover {
-    border-color:rgba(124,58,237,.35);
-    background:rgba(124,58,237,.07);
-    transform:translateY(-2px);
+    border-color: rgba(124,58,237,.35);
+    background: rgba(124,58,237,.07);
+    transform: translateY(-2px);
 }
 
 .prompt-icon {
-    font-size:18px;
-    margin-bottom:6px;
+    font-size: 18px;
+    margin-bottom: 6px;
 }
 
 .prompt-title {
-    color:#e8ebf1;
-    font-size:12px;
-    font-weight:700;
+    color: #e8ebf1;
+    font-size: 12px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
 }
 
 .prompt-sub {
-    color:#747d8f;
-    font-size:10px;
-    margin-top:3px;
+    color: #747d8f;
+    font-size: 10px;
+    margin-top: 3px;
+    overflow-wrap: anywhere;
 }
 
+
+/* ============================================================
+   STREAMLIT BUTTONS
+   ============================================================ */
+
 .stButton > button {
-    border-radius:13px;
-    min-height:44px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.08);
-    color:#dce1ea;
-    font-weight:600;
-    transition:all .2s ease;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border-radius: 13px;
+    min-height: 44px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.08);
+    color: #dce1ea;
+    font-weight: 600;
+    transition: all .2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .stButton > button:hover {
-    border-color:rgba(124,58,237,.42);
-    background:rgba(124,58,237,.09);
-    color:#fff;
+    border-color: rgba(124,58,237,.42);
+    background: rgba(124,58,237,.09);
+    color: #fff;
 }
+
+
+/* ============================================================
+   RESPONSIVE COLUMNS
+   ============================================================ */
+
+[data-testid="stHorizontalBlock"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+[data-testid="column"] {
+    min-width: 0 !important;
+    max-width: 100% !important;
+}
+
+
+/* ============================================================
+   CHAT MESSAGES
+   ============================================================ */
 
 [data-testid="stChatMessage"] {
-    border:1px solid rgba(255,255,255,.065);
-    background:rgba(255,255,255,.025);
-    border-radius:20px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border: 1px solid rgba(255,255,255,.065);
+    background: rgba(255,255,255,.025);
+    border-radius: 20px;
     padding: 15px 18px;
     margin: 10px 0;
-    box-shadow:0 10px 35px rgba(0,0,0,.12);
+    box-shadow: 0 10px 35px rgba(0,0,0,.12);
+    overflow: hidden;
 }
 
-[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) {
-    background:linear-gradient(135deg,rgba(124,58,237,.10),rgba(37,99,235,.055));
-    border-color:rgba(124,58,237,.16);
+[data-testid="stChatMessage"] > div {
+    min-width: 0;
+    max-width: 100%;
+}
+
+[data-testid="stChatMessage"] p,
+[data-testid="stChatMessage"] li,
+[data-testid="stChatMessage"] h1,
+[data-testid="stChatMessage"] h2,
+[data-testid="stChatMessage"] h3,
+[data-testid="stChatMessage"] h4 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+[data-testid="stChatMessage"]:has(
+    [data-testid="stChatMessageAvatarUser"]
+) {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,58,237,.10),
+            rgba(37,99,235,.055)
+        );
+    border-color: rgba(124,58,237,.16);
 }
 
 [data-testid="stChatMessage"] p {
-    color:#dce1e9;
-    font-size:14px;
-    line-height:1.72;
+    color: #dce1e9;
+    font-size: 14px;
+    line-height: 1.72;
 }
 
+
+/* ============================================================
+   CODE BLOCKS
+   ============================================================ */
+
 [data-testid="stChatMessage"] pre {
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:13px;
-    background:#0a0d14 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 13px;
+    background: #0a0d14 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: pre !important;
 }
 
 [data-testid="stChatMessage"] pre code {
-    font-size:12px !important;
-    line-height:1.65 !important;
+    font-size: 12px !important;
+    line-height: 1.65 !important;
 }
 
+[data-testid="stChatMessage"] table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   CHAT INPUT
+   ============================================================ */
+
 [data-testid="stChatInput"] {
-    border-top:0 !important;
-    background:transparent !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border-top: 0 !important;
+    background: transparent !important;
 }
 
 [data-testid="stChatInput"] > div {
-    background:rgba(16,19,29,.88) !important;
-    border:1px solid rgba(255,255,255,.10) !important;
-    border-radius:18px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    background: rgba(16,19,29,.88) !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 18px !important;
+
     box-shadow:
         0 15px 45px rgba(0,0,0,.38),
         0 0 0 1px rgba(124,58,237,.025) !important;
-    backdrop-filter:blur(18px);
+
+    backdrop-filter: blur(18px);
 }
 
 [data-testid="stChatInput"] textarea {
-    color:#f8fafc !important;
-    font-size:14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    color: #f8fafc !important;
+    font-size: 14px !important;
 }
 
 [data-testid="stChatInput"] textarea::placeholder {
-    color:#697285 !important;
+    color: #697285 !important;
 }
 
+
+/* ============================================================
+   OTHER
+   ============================================================ */
+
 .soft-divider {
-    height:1px;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
-    margin:20px 0;
+    width: 100%;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+    margin: 20px 0;
 }
 
 .app-footer {
-    text-align:center;
-    color:#50596a;
-    font-size:10px;
-    padding:18px 0 4px;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    color: #50596a;
+    font-size: 10px;
+    padding: 18px 0 4px;
+    overflow-wrap: anywhere;
 }
 
 .login-card {
+    width: 100%;
     max-width: 440px;
     margin: 8vh auto 0;
     padding: 30px;
     border-radius: 24px;
     border: 1px solid rgba(255,255,255,.085);
     background:
-        radial-gradient(circle at 20% 10%, rgba(124,58,237,.12), transparent 35%),
-        linear-gradient(135deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(124,58,237,.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
     box-shadow: 0 25px 80px rgba(0,0,0,.25);
 }
 
 .login-title {
-    text-align:center;
-    font-size:30px;
-    font-weight:800;
-    margin-bottom:6px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 6px;
 }
 
 .login-subtitle {
-    text-align:center;
-    color:#8f98aa;
-    font-size:13px;
-    margin-bottom:24px;
+    text-align: center;
+    color: #8f98aa;
+    font-size: 13px;
+    margin-bottom: 24px;
+    overflow-wrap: anywhere;
 }
 
-#MainMenu {visibility:hidden;}
-footer {visibility:hidden;}
-header[data-testid="stHeader"] { height:0; }
+#MainMenu {
+    visibility: hidden;
+}
 
-@media (max-width: 768px) {
+footer {
+    visibility: hidden;
+}
+
+header[data-testid="stHeader"] {
+    height: 0;
+}
+
+
+/* ============================================================
+   TABLET — 768px to 1024px
+   ============================================================ */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
     .block-container {
-        padding: 1.1rem .8rem 6rem;
+        max-width: 100%;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        padding-top: 1.7rem;
+        padding-bottom: 6rem;
     }
 
     .hero h1 {
-        font-size:38px;
-        letter-spacing:-1.7px;
+        font-size: clamp(38px, 6vw, 50px);
+        letter-spacing: -2px;
     }
 
     .welcome-card {
-        padding:24px 17px;
-        border-radius:20px;
+        max-width: 760px;
+        padding: 28px;
     }
 
     [data-testid="stChatMessage"] {
-        padding:13px;
-        border-radius:17px;
+        padding: 14px 16px;
+        border-radius: 18px;
     }
 }
+
+
+/* ============================================================
+   MOBILE — 481px to 768px
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .block-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-top: 1rem !important;
+        padding-bottom: 6rem !important;
+        padding-left: .75rem !important;
+        padding-right: .75rem !important;
+        margin: 0 !important;
+    }
+
+    .hero {
+        padding: 5px 0 15px;
+    }
+
+    .hero-badge {
+        font-size: 9px;
+        padding: 6px 10px;
+    }
+
+    .hero h1 {
+        font-size: clamp(30px, 9vw, 40px);
+        line-height: 1.08;
+        letter-spacing: -1.5px;
+        margin-top: 14px;
+    }
+
+    .hero p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .chat-title {
+        font-size: 13px;
+        padding: 0 5px;
+    }
+
+    .welcome-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 24px 16px;
+        margin: 8px auto 18px;
+        border-radius: 20px;
+    }
+
+    .welcome-icon {
+        width: 54px;
+        height: 54px;
+        font-size: 26px;
+        border-radius: 17px;
+    }
+
+    .welcome-card h2 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    .welcome-card p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .prompt-label {
+        margin-top: 4px;
+    }
+
+    /*
+       Important:
+       Streamlit's 4-column layout is allowed to wrap on mobile.
+    */
+
+    [data-testid="stHorizontalBlock"] {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: .65rem !important;
+    }
+
+    [data-testid="stHorizontalBlock"] > [data-testid="column"] {
+        flex: 1 1 calc(50% - .325rem) !important;
+        width: calc(50% - .325rem) !important;
+        min-width: 0 !important;
+        max-width: calc(50% - .325rem) !important;
+    }
+
+    [data-testid="column"] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .prompt-card {
+        min-height: 84px;
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    .prompt-icon {
+        font-size: 17px;
+    }
+
+    .prompt-title {
+        font-size: 11px;
+    }
+
+    .prompt-sub {
+        font-size: 9px;
+    }
+
+    .stButton > button {
+        min-height: 42px;
+        font-size: 12px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    [data-testid="stChatMessage"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        padding: 12px !important;
+        margin: 8px 0 !important;
+        border-radius: 17px;
+    }
+
+    [data-testid="stChatMessage"] p {
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    [data-testid="stChatMessage"] pre {
+        font-size: 11px !important;
+        border-radius: 10px;
+    }
+
+    [data-testid="stChatMessage"] pre code {
+        font-size: 11px !important;
+        line-height: 1.55 !important;
+    }
+
+    [data-testid="stChatInput"] {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    [data-testid="stChatInput"] > div {
+        border-radius: 16px !important;
+    }
+
+    [data-testid="stChatInput"] textarea {
+        font-size: 13px !important;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 440px;
+        margin-top: 5vh;
+        padding: 24px 18px;
+        border-radius: 20px;
+    }
+
+    .login-title {
+        font-size: 26px;
+    }
+
+    .app-footer {
+        font-size: 9px;
+        padding-bottom: 2px;
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE — 320px to 480px
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    .block-container {
+        padding-left: .6rem !important;
+        padding-right: .6rem !important;
+    }
+
+    .hero h1 {
+        font-size: clamp(27px, 9vw, 34px);
+        letter-spacing: -1.2px;
+    }
+
+    .hero p {
+        font-size: 11px;
+    }
+
+    .welcome-card {
+        padding: 20px 13px;
+        border-radius: 18px;
+    }
+
+    .welcome-card h2 {
+        font-size: 20px;
+    }
+
+    .welcome-card p {
+        font-size: 11px;
+    }
+
+    /*
+       On very small phones:
+       1 prompt per row.
+    */
+
+    [data-testid="stHorizontalBlock"] > [data-testid="column"] {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .prompt-card {
+        min-height: auto;
+        padding: 13px;
+    }
+
+    .prompt-title {
+        font-size: 12px;
+    }
+
+    .prompt-sub {
+        font-size: 10px;
+    }
+
+    .stButton > button {
+        font-size: 12px;
+        min-height: 40px;
+    }
+
+    [data-testid="stChatMessage"] {
+        padding: 10px !important;
+        border-radius: 15px;
+    }
+
+    [data-testid="stChatMessage"] p {
+        font-size: 12.5px;
+    }
+
+    [data-testid="stChatMessage"] pre code {
+        font-size: 10px !important;
+    }
+
+    .login-card {
+        padding: 20px 14px;
+        margin-top: 3vh;
+    }
+}
+
+
+/* ============================================================
+   EXTRA SAFETY AGAINST OVERFLOW
+   ============================================================ */
+
+img,
+video,
+iframe,
+svg,
+canvas {
+    max-width: 100% !important;
+}
+
+[data-testid="stMarkdownContainer"],
+[data-testid="stMarkdownContainer"] > div {
+    max-width: 100%;
+    min-width: 0;
+}
+
+[data-testid="stElementContainer"] {
+    max-width: 100%;
+    min-width: 0;
+}
+
 </style>
 """,
     unsafe_allow_html=True,
