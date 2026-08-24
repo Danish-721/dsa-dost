@@ -29,9 +29,9 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-API_BASE_URL = os.getenv(
+API_BASE_URL = st.secrets.get(
     "DJANGO_API_BASE_URL",
-    "http://127.0.0.1:8000/api",
+    "https://dsa-dost.onrender.com/api",
 ).rstrip("/")
 
 TOKEN_URL = os.getenv(
