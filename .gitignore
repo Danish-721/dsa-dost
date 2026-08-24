@@ -1,14 +1,40 @@
-# Virtual environment
-.venv/
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
 
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
 
-# Environment / secrets
-.env
-.env.*
-.streamlit/secrets.toml
+# Virtual environment
+.venv/
+venv/
+env/
 
 # Django
 db.sqlite3
+staticfiles/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+.streamlit/
+
+# Django backend
+backend/__pycache__/
+backend/*/__pycache__/
+backend/staticfiles/
+backend/db.sqlite3
+backend/*.pyc
+
+# Backup files
+requirements-backup.txt
